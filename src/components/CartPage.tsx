@@ -66,7 +66,8 @@ const CartPage: React.FC = () => {
         paymentMethod: customerInfo.paymentMethod
       };
 
-      const response = await axios.post('http://localhost:5000/api/orders', orderData);
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+      const response = await axios.post(`${API_URL}/orders`, orderData);
       
       if (response.status === 201) {
         alert(`Order placed successfully! Order ID: ${response.data.order.orderId}\nTotal: Rs ${state.total.toFixed(2)}`);

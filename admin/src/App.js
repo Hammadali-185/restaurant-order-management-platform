@@ -4,7 +4,8 @@ import { Package, Clock, CheckCircle, XCircle, Bell } from 'lucide-react';
 import axios from 'axios';
 import { io } from 'socket.io-client';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
 
 function App() {
   const [orders, setOrders] = useState([]);
@@ -13,7 +14,7 @@ function App() {
 
   useEffect(() => {
     // Connect to WebSocket for real-time updates
-    const newSocket = io('http://localhost:5000');
+    const newSocket = io(SOCKET_URL);
     setSocket(newSocket);
 
     newSocket.on('connect', () => {

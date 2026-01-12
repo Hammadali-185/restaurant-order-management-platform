@@ -12,6 +12,7 @@ Thumbs.db
 backend/.env
 admin/.env
 admin-dashboard/.env
+config.js
 .vscode/
 .idea/
 coverage/
